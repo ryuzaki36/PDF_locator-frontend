@@ -1,18 +1,7 @@
-import { Link } from "react-router-dom";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Checkbox,
-  Button,
-  Typography,
-  TextField,
-  FormControlLabel,
-} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,8 +68,9 @@ const useStyles = makeStyles((theme) => ({
 
 function SignIn() {
   const classes = useStyles();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -90,63 +80,80 @@ function SignIn() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('localhost:8000/register', { email, password, isManager: false })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleSubmit = () => {
+    history.push('/dashboard')
+    
+    // axios.post('localhost:8000/register', { email, password, is_manager: false })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.overlay}></div>
-      <div className={classes.container}>
-        <Card className={classes.card}>
-          <CardHeader className={classes.header} title="Sign In" />
-          <CardContent>
-            <form className={classes.form} onSubmit={handleSubmit}>
-              <TextField
-                id="email"
-                label="Email"
-                variant="outlined"
-                type="email"
-                required
-                fullWidth
-                autoFocus
-                onChange={handleEmailChange}
-              />
-              <TextField
-                id="password"
-                label="Password"
-                variant="outlined"
-                type="password"
-                required
-                fullWidth
-                onChange={handlePasswordChange}
-              />
-              <FormControlLabel
-                control={<Checkbox id="rememberMe" color="primary" />}
-                label="Remember Me"
-              />
-            </form>
-          </CardContent>
-          <CardActions className={classes.actions}>
-            <Button variant="contained" color="primary" fullWidth>
-              Sign In
-            </Button>
-          </CardActions>
-          <div className={classes.signUpLink}>
-            <Typography variant="body2">Don't have an account?</Typography>
-            <Link to="/auth/sign-up" className={classes.signUpText}>
-              Sign up
-            </Link>
+    <div className="container-scroller">
+      <div className="container-fluid page-body-wrapper full-page-wrapper">
+        <div className="content-wrapper d-flex align-items-center auth">
+          <div className="row w-100">
+            <div className="col-lg-4 mx-auto">
+              <div className="auth-form-light text-left p-5">
+                <div className="brand-logo">
+                  <img src="../../images/logo.svg" alt="logo" />
+                </div>
+                <h4>Hello! let's get started</h4>
+                <h6 className="font-weight-light">Sign in to continue.</h6>
+                <form className="pt-3">
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      className="form-control form-control-lg"
+                      id="exampleInputEmail1"
+                      placeholder="Username"
+                      onClick={handleEmailChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      className="form-control form-control-lg"
+                      id="exampleInputPassword1"
+                      placeholder="Password"
+                      onClick={handlePasswordChange}
+                    />
+                  </div>
+                  <div className="mt-3" onClick={handleSubmit}>
+                    <a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                      SIGN IN
+                    </a>
+                  </div>
+                  <div className="my-2 d-flex justify-content-between align-items-center">
+                    <div className="form-check">
+                      <label className="form-check-label text-muted">
+                        <input type="checkbox" className="form-check-input" />
+                        Keep me signed in
+                      </label>
+                    </div>
+                    <a href="#" className="auth-link text-black">
+                      Forgot password?
+                    </a>
+                  </div>
+
+                  <div className="text-center mt-4 font-weight-light">
+                    Don't have an account?{" "}
+                    <Link to="/signup" className="text-primary">
+                      Create
+                    </Link>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </Card>
+        </div>
+        {/* content-wrapper ends */}
       </div>
+      {/* page-body-wrapper ends */}
     </div>
   );
 }

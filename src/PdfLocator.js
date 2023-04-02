@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import WebViewer from "@pdftron/webviewer";
-import "./../App.css";
+import "./App.css";
 
 const PdfLocator = () => {
   const viewer = useRef(null);
@@ -50,7 +50,7 @@ const PdfLocator = () => {
         x: item.x,
         y: item.y,
         input_data: item.input_data,
-        font_size: item.font_size
+        font_size: item.font_size,
       };
       const pageObj = acc.find((p) => p.page === page);
       if (!pageObj) {
@@ -60,14 +60,15 @@ const PdfLocator = () => {
       }
       return acc;
     }, []);
-    console.log(payload)
+
+    console.log(payload);
   };
 
   return (
     <>
-      <input type="file" onChange={handleChange} />
-      {files && <div className="webviewer" ref={viewer}></div>}
+      <input type="file" onChange={handleChange} />{" "}
       {files && <button onClick={handleButtonClick}>Get Form Values</button>}
+      {files && <div className="webviewer" ref={viewer}></div>}
     </>
   );
 };
