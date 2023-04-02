@@ -85,24 +85,24 @@ const PdfLocator = () => {
       authorID,
       pdf_file: encodedString,
     };
-    toast.success("Saved File Succesfully", {
-      position: "bottom-center",
-      hideAfter: 5,
-      loader: true,
-      showCloseButton: false,
-      onClick: () => {},
-      onClose: () => {},
-    });
-    history.push('/history')
     
-    // axios
-    //   .post("/upload", payload)
-    //   .then((r) => {
-    //     history.push('/dashboard')
-    //   })
-    //   .catch(() => {
-    //     alert("Something went wrong saving the file");
-    //   });
+    
+    axios
+      .post("http://127.0.0.1:8000/upload", payload)
+      .then((r) => {
+        toast.success("Saved File Succesfully", {
+          position: "bottom-center",
+          hideAfter: 5,
+          loader: true,
+          showCloseButton: false,
+          onClick: () => {},
+          onClose: () => {},
+        });
+        history.push('/history')
+      })
+      .catch(() => {
+        alert("Something went wrong saving the file");
+      });
     // {
     //   "file_name": "Mercantile-Application-09162021.pdf",
     //   "json_data": [

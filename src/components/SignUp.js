@@ -93,7 +93,7 @@ function SignUp() {
 
   const handleSubmit = () => {
     axios
-      .post("localhost:8000/register", { email, password, is_manager: false })
+      .post("http://localhost:8000/register", { email, password, is_manager: false })
       .then((res) => {
         const { authorID } = res.data;
         if (authorID) {
@@ -104,6 +104,7 @@ function SignUp() {
       .catch((error) => {
         console.error(error);
       });
+    console.log(email, password);
   };
 
   return (
@@ -127,7 +128,7 @@ function SignUp() {
                       className="form-control form-control-lg"
                       id="exampleInputEmail1"
                       placeholder="Email"
-                      onClick={handleEmailChange}
+                      onChange={handleEmailChange}
                     />
                   </div>
 
@@ -137,7 +138,7 @@ function SignUp() {
                       className="form-control form-control-lg"
                       id="exampleInputPassword1"
                       placeholder="Password"
-                      onClick={handlePasswordChange}
+                      onChange={handlePasswordChange}
                     />
                   </div>
                   <div className="mb-4">

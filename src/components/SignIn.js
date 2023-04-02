@@ -81,7 +81,7 @@ function SignIn() {
 
   const handleSubmit = () => {
     axios
-      .post("localhost:8000/login", { email, password })
+      .post("http://localhost:8000/login", { email, password })
       .then((res) => {
         const { authorID } = res.data;
         if (authorID) {
@@ -113,7 +113,7 @@ function SignIn() {
                       className="form-control form-control-lg"
                       id="exampleInputEmail1"
                       placeholder="Username"
-                      onClick={handleEmailChange}
+                      onChange={handleEmailChange}
                     />
                   </div>
                   <div className="form-group">
@@ -122,7 +122,7 @@ function SignIn() {
                       className="form-control form-control-lg"
                       id="exampleInputPassword1"
                       placeholder="Password"
-                      onClick={handlePasswordChange}
+                      onChange={handlePasswordChange}
                     />
                   </div>
                   <div className="mt-3" onClick={handleSubmit}>
