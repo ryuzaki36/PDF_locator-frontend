@@ -67,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn() {
-  const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
@@ -81,15 +80,18 @@ function SignIn() {
   };
 
   const handleSubmit = () => {
-    history.push('/dashboard')
-    
-    // axios.post('localhost:8000/register', { email, password, is_manager: false })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    axios
+      .post("localhost:8000/login", { email, password })
+      .then((res) => {
+        const { authorID } = res.data;
+        if (authorID) {
+          localStorage.setItem("token", authorID);
+          history.push("/dashboard");
+        }
+      })
+      .catch((error) => {
+        alert("login failed");
+      });
   };
 
   return (

@@ -1,8 +1,9 @@
 import React from "react";
 import PdfLocator from "../PdfLocator";
 import { Link } from "react-router-dom";
+import { HistoryContent } from "./historyContent";
 
-const Dashboard = () => {
+const History = () => {
   return (
     <div className="container-scroller">
       {/* partial:partials/_navbar.html */}
@@ -550,13 +551,15 @@ const Dashboard = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/dashboard">
                 <i className="fa fa-book menu-icon" />
-                <span style={{color:"blueviolet"}} className="menu-title">PDF Locator</span>
+                <span className="menu-title">PDF Locator</span>
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/history">
                 <i className="fa fa-home menu-icon" />
-                <span className="menu-title">History</span>
+                <span style={{ color: "blueviolet" }} className="menu-title">
+                  History
+                </span>
               </Link>
             </li>
           </ul>
@@ -564,7 +567,7 @@ const Dashboard = () => {
         {/* partial */}
         <div className="main-panel">
           <div className="content-wrapper">
-            <PdfLocator />
+            <HistoryContent />
           </div>
           {/* content-wrapper ends */}
           {/* partial:partials/_footer.html */}
@@ -588,4 +591,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default History;

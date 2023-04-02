@@ -92,15 +92,18 @@ function SignUp() {
   };
 
   const handleSubmit = () => {
-    history.push("/dashboard");
-    // axios
-    //   .post("localhost:8000/login", { email, password, is_manager: false })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    axios
+      .post("localhost:8000/register", { email, password, is_manager: false })
+      .then((res) => {
+        const { authorID } = res.data;
+        if (authorID) {
+          localStorage.setItem("token", authorID);
+          history.push("/dashboard");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
