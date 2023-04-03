@@ -44,8 +44,21 @@ const PdfLocator = () => {
     }
   }, [files]);
 
-  const handleButtonClick = () => {
+  const handleButtonClick =async () => {
     const { annotationManager } = webViewerInstance.Core;
+    const doc = webViewerInstance.docViewer.getDocument();
+    console.log(doc);                 
+    const base64String =await doc.getFileData().then((data) => {
+
+
+      const base64String = btoa( // convert binary data to base64 encoded string   
+        new Uint8Array(data).reduce(
+          (data, byte) => data + String.fromCharCode(byte),  
+          ''         
+        )                                    
+      );             
+      return base64String;           
+    });  
 
     const fieldManager = annotationManager.getFieldManager();
     const fields = fieldManager.getFields();
@@ -103,44 +116,6 @@ const PdfLocator = () => {
       .catch(() => {
         alert("Something went wrong saving the file");
       });
-    // {
-    //   "file_name": "Mercantile-Application-09162021.pdf",
-    //   "json_data": [
-    //     {
-    //       "page": 1,
-    //       "coordinate": [
-    //         {
-    //           "field_name": "Name",
-    //           "x": 100,
-    //           "y": 200,
-    //           "input_data": "John Smith",
-    //           "font_size": 12
-    //         },
-    //         {
-    //           "field_name": "Gender",
-    //           "x": 120,
-    //           "y": 240,
-    //           "input_data": "Male",
-    //           "font_size": 12
-    //         }
-    //       ]
-    //     },
-    //     {
-    //       "page": 2,
-    //       "coordinate": [
-    //         {
-    //           "field_name": "Address",
-    //           "x": 150,
-    //           "y": 250,
-    //           "input_data": "123 Main St",
-    //           "font_size": 10
-    //         }
-    //       ]
-    //     }
-    //   ],
-    //   "authorID": "b05be45760544a0f98cbb7635769dd31",
-    //   "pdf_file": "JVBERi0xLjMKJcfsj6IKNSAw...<base64-encoded PDF content>..."
-    // }
   };
 
   return (

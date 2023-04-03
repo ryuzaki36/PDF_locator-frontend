@@ -83,9 +83,10 @@ function SignIn() {
     axios
       .post("http://localhost:8000/login", { email, password })
       .then((res) => {
-        const { authorID } = res.data;
+        const { authorID,email } = res.data;
         if (authorID) {
           localStorage.setItem("token", authorID);
+          localStorage.setItem("email", email);
           history.push("/dashboard");
         }
       })

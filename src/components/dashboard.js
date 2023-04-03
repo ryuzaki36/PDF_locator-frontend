@@ -542,7 +542,7 @@ const Dashboard = () => {
                   <img src="images/faces/face5.jpg" alt="image" />
                 </div>
                 <div className="profile-name">
-                  <p className="name">Welcome Jane</p>
+                  <p className="name">{localStorage.getItem("email").split("@")[0]}</p>
                   <p className="designation">Super Admin</p>
                 </div>
               </div>

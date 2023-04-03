@@ -4,6 +4,7 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/dashboard";
 import History from "./components/history";
+import PdfViewer from "./components/viewpdf";
 
 const LoginCheck = () => {
   const token = localStorage.getItem("token");
@@ -26,6 +27,7 @@ const App = () => {
         <Route exact path="/dashboard" component={Dashboard}></Route>
         <Route exact path="/history" component={History}></Route>
         <Route exact path={"/"} component={LoginCheck}></Route>
+        <Route exact path="/pdf" component={PdfViewer}></Route>
       </Switch>
     </BrowserRouter>
   );

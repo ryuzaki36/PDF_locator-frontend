@@ -1,8 +1,11 @@
+import { Button } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export const HistoryContent = ({}) => {
   const [data, setData] = useState([]);
+  const history = useHistory();
   useEffect(() => {
     const authorID = localStorage.getItem("token");
 
@@ -10,6 +13,15 @@ export const HistoryContent = ({}) => {
       setData(res.data);
     });         
   }, []);
+ const handleclick = (pdf_file) => {
+console.log(pdf_file);
+  //push with params as pdf_file
+  // history.push({      
+  //   pathname: '/pdf',       
+  //   search: `?pdf_file=${pdf_file}`,        
+  // });                                                       
+                      
+ };
   return (
     <div className="container">
     <table className="table">
@@ -23,6 +35,7 @@ export const HistoryContent = ({}) => {
           <th>Y</th>
           <th>Input Data</th>
           <th>Font Size</th>
+          <th>PDF Detail</th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +52,7 @@ export const HistoryContent = ({}) => {
                   <td>{coord.y}</td>
                   <td>{coord.input_data}</td>
                   <td>{coord.font_size}</td>
+                  <td><button classname='btn btn-primary' onClick={handleclick.bind(null,entry.pdf_file)}>ViewPDF</button></td>
                 </tr>
               );
             });
