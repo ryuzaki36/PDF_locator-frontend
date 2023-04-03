@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import PdfLocator from "../PdfLocator";
 import { Link } from "react-router-dom";
 import { HistoryContent } from "./historyContent";
+import { PDFContext } from "../context/PDFContext";
+import PDFViewer from "./viewpdf";
 
 const History = () => {
+  const { isPDFView } = useContext(PDFContext);
   return (
     <div className="container-scroller">
       {/* partial:partials/_navbar.html */}
@@ -543,7 +546,9 @@ const History = () => {
                   <img src="images/faces/face5.jpg" alt="image" />
                 </div>
                 <div className="profile-name">
-                  <p className="name">Welcome Jane</p>
+                  <p className="name">
+                    {localStorage.getItem("email").split("@")[0]}
+                  </p>
                   <p className="designation">Super Admin</p>
                 </div>
               </div>
@@ -567,7 +572,7 @@ const History = () => {
         {/* partial */}
         <div className="main-panel">
           <div className="content-wrapper">
-            <HistoryContent />
+            {isPDFView ? <PDFViewer /> : <HistoryContent />}
           </div>
           {/* content-wrapper ends */}
           {/* partial:partials/_footer.html */}

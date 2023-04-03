@@ -4,7 +4,8 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/dashboard";
 import History from "./components/history";
-import PdfViewer from "./components/viewpdf";
+import PDFViewer from "./components/viewpdf";
+import PDFProvider from "./context/PDFContext";
 
 const LoginCheck = () => {
   const token = localStorage.getItem("token");
@@ -20,16 +21,18 @@ const LoginCheck = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path={"/signin"} component={SignIn}></Route>
-        <Route exact path={"/signup"} component={SignUp}></Route>
-        <Route exact path="/dashboard" component={Dashboard}></Route>
-        <Route exact path="/history" component={History}></Route>
-        <Route exact path={"/"} component={LoginCheck}></Route>
-        <Route exact path="/pdf" component={PdfViewer}></Route>
-      </Switch>
-    </BrowserRouter>
+    <PDFProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={"/signin"} component={SignIn}></Route>
+          <Route exact path={"/signup"} component={SignUp}></Route>
+          <Route exact path="/dashboard" component={Dashboard}></Route>
+          <Route exact path="/history" component={History}></Route>
+          <Route exact path={"/"} component={LoginCheck}></Route>
+          <Route exact path="/pdf" component={PDFViewer}></Route>
+        </Switch>
+      </BrowserRouter>
+    </PDFProvider>
   );
 };
 
