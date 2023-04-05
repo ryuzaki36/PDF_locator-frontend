@@ -4,8 +4,9 @@ import { Link,useHistory } from "react-router-dom";
 import { HistoryContent } from "./historyContent";
 import { PDFContext } from "../context/PDFContext";
 import PDFViewer from "./viewpdf";
+import Settings from "./settings";
 
-const History = () => {
+const SettinghsPage = () => {
   const history = useHistory();
   useEffect(()=>{
     if(!localStorage.getItem('token')){
@@ -406,7 +407,7 @@ useEffect(() => {
         {/* partial */}
         <div className="main-panel">
           <div className="content-wrapper">
-            {isPDFView ? <PDFViewer /> : <HistoryContent />}
+            <Settings />
           </div>
           {/* content-wrapper ends */}
           {/* partial:partials/_footer.html */}
@@ -422,4 +423,4 @@ useEffect(() => {
   );
 };
 
-export default History;
+export default SettinghsPage;

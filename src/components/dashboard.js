@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PdfLocator from "../PdfLocator";
 import { Link,useHistory} from "react-router-dom";
 
 const Dashboard = () => {
   const history = useHistory();
+  useEffect(()=>{
+    if(!localStorage.getItem('token')){
+      history.push('/signin')
+    }
+  })
   const handleClick = () => {
     localStorage.clear();
     history.push("/");
@@ -76,6 +81,7 @@ const Dashboard = () => {
                 <img src="images/icon.png" alt="profile" />
               </a>
               <div
+                onClick={()=>{history.push('/settings')}}
                 className="dropdown-menu dropdown-menu-right navbar-dropdown"
                 aria-labelledby="profileDropdown"
               >

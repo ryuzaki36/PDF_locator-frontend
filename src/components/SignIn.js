@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import cogoToast from "cogo-toast";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,7 +93,14 @@ function SignIn() {
         }
       })
       .catch((error) => {
-        alert("login failed! Username or Password Do not Match");
+        cogoToast.error("Error loggin in. Something went wrong", {
+          position: "bottom-center",
+          hideAfter: 5,
+          loader: true,
+          showCloseButton: false,
+          onClick: () => {},
+          onClose: () => {},
+        });
       });
   };
 

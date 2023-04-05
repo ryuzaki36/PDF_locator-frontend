@@ -6,6 +6,8 @@ import Dashboard from "./components/dashboard";
 import History from "./components/history";
 import PDFViewer from "./components/viewpdf";
 import PDFProvider from "./context/PDFContext";
+import Settings from "./components/settings";
+import SettinghsPage from "./components/settingsPage";
 
 const LoginCheck = () => {
   const token = localStorage.getItem("token");
@@ -29,7 +31,7 @@ const App = () => {
           <Route exact path="/dashboard" component={Dashboard}></Route>
           <Route exact path="/history" component={History}></Route>
           <Route exact path={"/"} component={LoginCheck}></Route>
-          <Route exact path="/pdf" component={PDFViewer}></Route>
+          <Route exact path="/settings" component={SettinghsPage}></Route>
         </Switch>
       </BrowserRouter>
     </PDFProvider>

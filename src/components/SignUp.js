@@ -13,6 +13,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import axios from "axios";
+import cogoToast from "cogo-toast";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,9 +105,16 @@ function SignUp() {
         }
       })
       .catch((error) => {
-        console.error(error);
+        cogoToast.error("Error Signing up. Something went wrong", {
+          position: "bottom-center",
+          hideAfter: 5,
+          loader: true,
+          showCloseButton: false,
+          onClick: () => {},
+          onClose: () => {},
+        });
       });
-    console.log(email, password);
+  
   };
 
   return (
