@@ -95,10 +95,11 @@ function SignUp() {
     axios
       .post("http://localhost:8000/register", { email, password, is_manager: false })
       .then((res) => {
-        const { authorID,email } = res.data;
+        const { authorID,email,is_manager } = res.data;
         if (authorID) {
           localStorage.setItem("token", authorID);
           localStorage.setItem("email", email);
+          localStorage.setItem("is_manager", is_manager);
           history.push("/dashboard");
         }
       })

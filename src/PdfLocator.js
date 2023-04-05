@@ -9,11 +9,12 @@ const PdfLocator = () => {
   const viewer = useRef(null);
   const [webViewerInstance, setWebViewerInstance] = useState(null);
   const [files, setFiles] = useState(null);
-  const [fileName, setFileName] = useState("");
+  const [name, setName] = useState("");
   const history = useHistory();
 
   const handleChange = (e) => {
     setFiles(e.target.files[0]);
+    setName(e.target.files[0].name);
   };
 
   useEffect(() => {
@@ -30,13 +31,16 @@ const PdfLocator = () => {
     }
   }, [files]);
 
+  // handles save button logic
   const handleButtonClick = async () => {
     const { annotationManager } = webViewerInstance.Core;
     const doc = webViewerInstance.docViewer.getDocument();
     const data = await doc.getFileData({
-      //get all the changes into the pdf as well
+      //get all the changes into the pdf as well (current edited state)
       xfdfString: await annotationManager.exportAnnotations(),
     });
+ 
+    // base64 encode the data
     const base64String = btoa(
       new Uint8Array(data).reduce(
         (data, byte) => data + String.fromCharCode(byte),
@@ -45,7 +49,7 @@ const PdfLocator = () => {
     );
     const fieldManager = annotationManager.getFieldManager();
     const fields = fieldManager.getFields();
-    const fieldData = fields.map((field) => {
+    const formFields = fields.map((field) => {
       const { X, Y, PageNumber } = field.widgets[0];
       return {
         page: PageNumber,
@@ -57,6 +61,14 @@ const PdfLocator = () => {
         fieldType: field.getFieldType(),
       };
     });
+  /// pull all data  console.log(fieldData);
+
+// if filter needed change line 51 fieldData to formFields
+const fieldData = formFields.filter(field => {
+  return (field.fieldType === 'TextFormField' && field.input_data !== '') || (field.fieldType === 'CheckBoxFormField' && field.input_data !== 'Off');
+});
+
+
     const json_data = fieldData.reduce((acc, item) => {
       const page = item.page;
       const coordinates = {
@@ -76,7 +88,7 @@ const PdfLocator = () => {
     }, []);
     const authorID = localStorage.getItem("token");
     const payload = {
-      file_name: fileName,
+      file_name: name,
       json_data,
       authorID,
       pdf_file: base64String,

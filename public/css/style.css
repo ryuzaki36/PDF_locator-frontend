@@ -19450,6 +19450,12 @@ input:focus {
   background: linear-gradient(85deg, #392c70, #6a005b);
 }
 
+.brand-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar.horizontal-layout-navbar .navbar-brand-wrapper .navbar-brand img {
   width: 140px;
 }
@@ -19609,7 +19615,9 @@ input:focus {
     box-shadow: none;
   }
 }
-
+.navbar-brand-wrapper {
+  padding-top: 20px;
+}
 /* Typography */
 body {
   font-size: 1rem;

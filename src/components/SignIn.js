@@ -83,15 +83,16 @@ function SignIn() {
     axios
       .post("http://localhost:8000/login", { email, password })
       .then((res) => {
-        const { authorID,email } = res.data;
+        const { authorID,email,is_manager } = res.data;
         if (authorID) {
           localStorage.setItem("token", authorID);
           localStorage.setItem("email", email);
+          localStorage.setItem("is_manager", is_manager);
           history.push("/dashboard");
         }
       })
       .catch((error) => {
-        alert("login failed");
+        alert("login failed! Username or Password Do not Match");
       });
   };
 
@@ -105,7 +106,7 @@ function SignIn() {
                 <div className="brand-logo">
                   <img src="../../images/logo.svg" alt="logo" />
                 </div>
-                <h4>Hello! let's get started</h4>
+                <h4>Welcome to PDF Fields Locator</h4>
                 <h6 className="font-weight-light">Sign in to continue.</h6>
                 <form className="pt-3">
                   <div className="form-group">

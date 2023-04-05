@@ -7,7 +7,7 @@ const PDFViewer = () => {
 
   return (
     <div>
-      <iframe src={fileUrl} width="100%" height="600px"></iframe>
+      <iframe src={fileUrl} width="100%" height="1000px"></iframe>
     </div>
   );
 };
