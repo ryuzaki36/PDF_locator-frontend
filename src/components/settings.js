@@ -8,7 +8,7 @@ const Settings = () => {
   const [userPassword, setUserPassword] = useState("");
   const [userIsAdmin, setUserIsAdmin] = useState(false);
 
-  const isAdmin = localStorage.getItem("is_manager");
+const isAdmin = JSON.parse(localStorage.getItem("is_manager"));
 
   const handleCreateUserClick = () => {
     setShowCreateUserForm(true);

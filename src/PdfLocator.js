@@ -107,7 +107,14 @@ const fieldData = formFields.filter(field => {
         history.push('/history')
       })
       .catch(() => {
-        alert("Something went wrong saving the file");
+        toast.error("Error! Something went wrong saving the file", {
+          position: "bottom-center",
+          hideAfter: 5,
+          loader: true,
+          showCloseButton: false,
+          onClick: () => {},
+          onClose: () => {},
+        });
       });
   };
 
@@ -117,7 +124,7 @@ const fieldData = formFields.filter(field => {
         className="d-flex justify-content-between align-items-center"
         style={{ marginLeft: "10px" }}
       >
-        <div className="input-group w-50">
+      {files?<div></div>:  <div className="input-group w-50">
           <div className="custom-file">
             <input
               type="file"
@@ -129,7 +136,7 @@ const fieldData = formFields.filter(field => {
               Import PDF
             </label>
           </div>
-        </div>
+        </div>}
         {files && (
           <button className="btn btn-primary ml-3" onClick={handleButtonClick}>
             Save

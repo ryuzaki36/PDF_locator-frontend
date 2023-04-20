@@ -45,7 +45,7 @@ export const HistoryContent = ({}) => {
           </tr>
         </thead>
         <tbody>
-          {data.length &&
+          {data.length !==0 &&
             data.map((entry) => {
               console.log(entry.file_name);
               console.log(name);

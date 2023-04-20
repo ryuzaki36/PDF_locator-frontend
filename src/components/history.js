@@ -88,9 +88,9 @@ useEffect(() => {
               <div
                 className="dropdown-menu dropdown-menu-right navbar-dropdown"
                 aria-labelledby="profileDropdown"
-                onClick={()=>{history.push('/settings')}}
+             
               >
-                <a className="dropdown-item">
+                <a className="dropdown-item"    onClick={()=>{history.push('/settings')}}>
                   <i className="fas fa-cog text-primary" />
                   Settings
                 </a>

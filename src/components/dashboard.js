@@ -81,11 +81,11 @@ const Dashboard = () => {
                 <img src="images/icon.png" alt="profile" />
               </a>
               <div
-                onClick={()=>{history.push('/settings')}}
+               
                 className="dropdown-menu dropdown-menu-right navbar-dropdown"
                 aria-labelledby="profileDropdown"
               >
-                <a className="dropdown-item">
+                <a className="dropdown-item"  onClick={()=>{history.push('/settings')}}>
                   <i className="fas fa-cog text-primary" />
                   Settings
                 </a>
