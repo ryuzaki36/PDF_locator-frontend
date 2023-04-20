@@ -1,63 +1,70 @@
-# WebViewer - React sample
+# Getting Started with Create React App
 
-[WebViewer](https://www.pdftron.com/documentation/web/) is a powerful JavaScript-based PDF Library that's part of the [PDFTron PDF SDK](https://www.pdftron.com). It provides a slick out-of-the-box responsive UI that interacts with the core library to view, annotate and manipulate PDFs that can be embedded into any web project.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![WebViewer UI](https://www.pdftron.com/downloads/pl/webviewer-ui.png)
+## Available Scripts
 
-This repo is specifically designed for any users interested in integrating WebViewer into React project. You can watch [a video here](https://youtu.be/bVhWXuLSL0k) to help you get started.
+In the project directory, you can run:
 
-## Demo
+### `yarn start`
 
-You can explore all of the functionality in our [showcase](https://www.pdftron.com/webviewer/demo/).
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Initial setup
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Before you begin, make sure your development environment includes [Node.js](https://nodejs.org/en/).
+### `yarn test`
 
-## Install
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```
-git clone https://github.com/PDFTron/webviewer-react-sample.git
-cd webviewer-react-sample
-npm install
-```
+### `yarn build`
 
-## Run
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-npm start
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-After the app starts, you will be able to see WebViewer running on `localhost:3000`.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Build
+### `yarn eject`
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `build/` directory. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-To test the build directory locally you can use [serve](https://www.npmjs.com/package/serve) or [http-server](https://www.npmjs.com/package/http-server). In case of serve, by default it strips the .html extension stripped from paths. We added serve.json configuration to disable cleanUrls option.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## GitHub Pages
-You can deploy your app to [GitHub Pages](https://pdftron.github.io/webviewer-react-sample/). To do so, make sure to update paths accordingly, for example, to deploy on `pdftron.github.io/webviewer-react-sample`, modify the `path`:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-```
-WebViewer(
- {
-   path: '/webviewer-react-sample/webviewer/lib',
-   initialDoc: '/webviewer-react-sample/files/PDFTRON_about.pdf',
- },
- viewer.current,
-).then((instance) => {
-```
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## WebViewer APIs
+## Learn More
 
-See [API documentation](https://www.pdftron.com/documentation/web/guides/ui/apis).
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Contributing
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-See [contributing](./CONTRIBUTING.md).
+### Code Splitting
 
-## License
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-See [license](./LICENSE).
-![](https://onepixel.pdftron.com/webviewer-react-sample)
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
