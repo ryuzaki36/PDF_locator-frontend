@@ -10,3 +10,5 @@ const copyFiles = async () => {
 };
 
 copyFiles();
+
+// test
